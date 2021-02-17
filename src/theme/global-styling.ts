@@ -25,9 +25,10 @@ body {
 }
 
 #root {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(120px, 220px) auto auto;
+  grid-template-rows: auto auto auto;
+  height: 100vh;
 }
 /**
 * Render the main element consistently in IE.

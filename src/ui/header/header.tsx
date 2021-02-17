@@ -5,6 +5,7 @@ import styled from '../../theme/styled-components';
 const HeaderWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.darkBackground};
   padding: ${({ theme }) => theme.spacers.m};
+  grid-column: 1 / span 3;
 `;
 
 const Title = styled.h1`

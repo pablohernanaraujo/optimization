@@ -13,7 +13,7 @@ export const Group = styled.div<GroupProps>`
   ${({ theme, type }) =>
     type === 'header' &&
     `
-    padding-top: ${theme.spacers.l};
+    padding-top: ${theme.spacers.m};
   `};
   ${({ type }) =>
     type === 'body' &&
@@ -23,7 +23,7 @@ export const Group = styled.div<GroupProps>`
   ${({ theme, type }) =>
     type === 'footer' &&
     `
-    padding-bottom: ${theme.spacers.l};
+    padding-bottom: ${theme.spacers.m};
   `};
   ${({ content }) =>
     content === 'left' &&

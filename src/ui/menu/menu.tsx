@@ -5,6 +5,10 @@ import styled from '../../theme/styled-components';
 
 const MenuWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.lightBackground};
+  overflow-y: scroll;
+`;
+
+const MenuContent = styled.div`
   padding: ${({ theme }) => theme.spacers.m};
 `;
 
@@ -21,8 +25,8 @@ const MenuItemCurrent = styled(MenuItem)`
 
 const links = [
   {
-    path: '/',
-    name: 'Inicio',
+    path: '/optimization',
+    name: 'Optimization',
   },
   {
     path: '/folder',
@@ -41,12 +45,36 @@ const links = [
     name: 'Styled components',
   },
   {
+    path: '/design-system',
+    name: 'Design system',
+  },
+  {
+    path: '/documentation',
+    name: 'Documentation',
+  },
+  {
     path: '/react-router-dom',
     name: 'React router dom',
   },
   {
     path: '/react-navigation',
     name: 'React navigation',
+  },
+  {
+    path: '/global-state',
+    name: 'Global state',
+  },
+  {
+    path: '/aliases',
+    name: 'Aliases',
+  },
+  {
+    path: '/multi-language',
+    name: 'Multi language',
+  },
+  {
+    path: '/development-tools',
+    name: 'Development tools',
   },
   {
     path: '/prettier',
@@ -72,6 +100,22 @@ const links = [
     path: '/detox',
     name: 'Detox',
   },
+  {
+    path: '/test-driven-development',
+    name: 'Test driven development',
+  },
+  {
+    path: '/backend-for-frontend',
+    name: 'Backend for frontend',
+  },
+  {
+    path: '/ci-cd',
+    name: 'CI/CD',
+  },
+  {
+    path: '/api-gateway',
+    name: 'Api gateway',
+  },
 ];
 
 export const Menu: FunctionComponent = () => {
@@ -79,21 +123,23 @@ export const Menu: FunctionComponent = () => {
 
   return (
     <MenuWrapper>
-      {links.map((link) => {
-        if (link.path === pathname) {
-          return (
-            <MenuItemCurrent key={link.path} to={link.path}>
-              {link.name}
-            </MenuItemCurrent>
-          );
-        }
+      <MenuContent>
+        {links.map((link) => {
+          if (link.path === pathname) {
+            return (
+              <MenuItemCurrent key={link.path} to={link.path}>
+                {link.name}
+              </MenuItemCurrent>
+            );
+          }
 
-        return (
-          <MenuItem key={link.path} to={link.path}>
-            {link.name}
-          </MenuItem>
-        );
-      })}
+          return (
+            <MenuItem key={link.path} to={link.path}>
+              {link.name}
+            </MenuItem>
+          );
+        })}
+      </MenuContent>
     </MenuWrapper>
   );
 };

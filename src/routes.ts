@@ -4,7 +4,7 @@ import { Eslint } from './pages/eslint';
 
 const Routes = [
   {
-    path: '/',
+    path: '/optimization',
     component: Home,
     exact: true,
   },

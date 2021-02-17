@@ -5,4 +5,6 @@ export const ScreenWrapper = styled.div`
   flex: 1;
   flex-direction: column;
   justify-content: space-between;
+  overflow-y: scroll;
+  grid-column: 2 / span 2;
 `;
