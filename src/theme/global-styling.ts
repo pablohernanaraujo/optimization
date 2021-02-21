@@ -27,7 +27,7 @@ body {
 #root {
   display: grid;
   grid-template-columns: minmax(120px, 220px) auto auto;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: 90px auto auto;
   height: 100vh;
 }
 /**

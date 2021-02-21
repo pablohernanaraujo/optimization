@@ -6,6 +6,7 @@ import styled from '../../theme/styled-components';
 const MenuWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.lightBackground};
   overflow-y: scroll;
+  height: calc(100vh - 90px);
 `;
 
 const MenuContent = styled.div`
@@ -17,10 +18,12 @@ const MenuItem = styled(Link)`
   padding: ${({ theme }) => theme.spacers.xs} 0px;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.text};
+  font-weight: 100;
 `;
 
 const MenuItemCurrent = styled(MenuItem)`
   color: ${({ theme }) => theme.colors.primary};
+  font-weight: 300;
 `;
 
 const links = [

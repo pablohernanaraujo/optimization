@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { CodeBlock as BlockCode, dracula } from 'react-code-blocks';
 
+import styled from '../../theme/styled-components';
 import { SupportedLanguages } from './types';
 
 interface CodeBlockProps {
@@ -9,15 +10,21 @@ interface CodeBlockProps {
   showLineNumbers: boolean;
 }
 
+const BlockCodeWrapper = styled.div`
+  font-weight: 100;
+`;
+
 export const CodeBlock: FunctionComponent<CodeBlockProps> = ({
   code,
   language,
   showLineNumbers,
 }) => (
-  <BlockCode
-    text={code}
-    language={language}
-    showLineNumbers={showLineNumbers}
-    theme={dracula}
-  />
+  <BlockCodeWrapper>
+    <BlockCode
+      text={code}
+      language={language}
+      showLineNumbers={showLineNumbers}
+      theme={dracula}
+    />
+  </BlockCodeWrapper>
 );

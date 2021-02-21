@@ -5,37 +5,42 @@ import { Group } from '../../ui/group';
 import { Link } from '../../ui/link';
 import { Spacer } from '../../ui/spacer';
 import { CodeBlock } from '../../ui/code-block';
+import { H2, H3, P, LI } from '../../ui/typography';
 import { install, eslintrc } from './codes';
 
 export const Prettier: FunctionComponent = () => (
   <ScreenWrapper>
     <Group type="header">
-      <h2>Prettier</h2>
+      <H2>Prettier</H2>
     </Group>
     <Group type="body">
-      <p>Es una herramienta que te ayuda a formatear el código.</p>
-      <p>
+      <P>Es una herramienta que te ayuda a formatear el código.</P>
+      <P>
         Cuando se trabaja en equipo es muy difícil mantener la consistencia del
         código de la aplicación, para eso se usa una herramienta como{' '}
         <Link href="https://prettier.io/" target="_blank">
           Prettier
         </Link>{' '}
         para poder resolver este problema.
-      </p>
-      <h3>Por qué necesitamos una herramienta para formateo del código?</h3>
+      </P>
+      <H3>Por qué necesitamos una herramienta para formateo del código?</H3>
       <ol>
-        <li>Código más fácil de entender.</li>
-        <li>Mantiene un estilo consistente del código en todo el equipo.</li>
-        <li>Mantiene buenas prácticas.</li>
-        <li>Salva tiempo al momento de acomodar el código.</li>
+        <LI emphasis="medium">Código más fácil de entender.</LI>
+        <LI emphasis="medium">
+          Mantiene un estilo consistente del código en todo el equipo.
+        </LI>
+        <LI emphasis="medium">Mantiene buenas prácticas.</LI>
+        <LI emphasis="medium">
+          Salva tiempo al momento de acomodar el código.
+        </LI>
       </ol>
-      <h3>1 - Instalación</h3>
-      <p>Comenzamos instalando la librería.</p>
+      <H3>1 - Instalación</H3>
+      <P>Comenzamos instalando la librería.</P>
       <CodeBlock code={install} language="javascript" showLineNumbers={false} />
-      <p>
+      <P>
         Y en la raíz del proyecto creamos un archivos llamado{' '}
         <strong>.eslintrc</strong> donde agregamos el siguiente contenido.
-      </p>
+      </P>
       <CodeBlock
         code={eslintrc}
         language="javascript"
@@ -44,7 +49,7 @@ export const Prettier: FunctionComponent = () => (
     </Group>
     <Group type="footer">
       <Spacer />
-      <h2>FOOTER</h2>
+      <H2>FOOTER</H2>
     </Group>
   </ScreenWrapper>
 );

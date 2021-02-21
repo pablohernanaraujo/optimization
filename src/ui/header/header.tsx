@@ -12,6 +12,7 @@ const Title = styled.h1`
   color: ${({ theme }) => theme.colors.primary};
   opacity: ${({ theme }) => theme.emphasis.high};
   margin: 0px;
+  font-weight: 500;
 `;
 
 export const Header: FunctionComponent = () => (
