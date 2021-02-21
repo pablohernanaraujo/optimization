@@ -24,6 +24,7 @@ export const Group = styled.div<GroupProps>`
     type === 'footer' &&
     `
     padding-bottom: ${theme.spacers.m};
+    background-color: ${theme.colors.darkBackground};
   `};
   ${({ content }) =>
     content === 'left' &&

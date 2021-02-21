@@ -11,7 +11,7 @@ interface CodeBlockProps {
 }
 
 const BlockCodeWrapper = styled.div`
-  font-weight: 100;
+  font-family: 'Poppins', sans-serif;
 `;
 
 export const CodeBlock: FunctionComponent<CodeBlockProps> = ({
