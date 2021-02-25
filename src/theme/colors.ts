@@ -13,6 +13,7 @@ export const colors = {
   danger: palette.redMull,
   link: palette.doverStraits,
   success: palette.vitalize,
+  highlight: palette.windsweptBeatch,
 };
 
 export type ColorsType = typeof colors;

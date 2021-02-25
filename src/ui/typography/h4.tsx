@@ -4,7 +4,7 @@ import { KeyColors } from '../../theme/colors';
 import { KeyEmphasis } from '../../theme/emphasis';
 import styled from '../../theme/styled-components';
 
-const Text = styled.li<{ color?: KeyColors; emphasis?: KeyEmphasis }>`
+const Text = styled.h4<{ color?: KeyColors; emphasis?: KeyEmphasis }>`
   color: ${({ theme, color }) =>
     color ? theme.colors[color] : theme.colors.text};
   opacity: ${({ theme, emphasis }) =>
@@ -12,7 +12,7 @@ const Text = styled.li<{ color?: KeyColors; emphasis?: KeyEmphasis }>`
   font-weight: 400;
 `;
 
-export const LI: FunctionComponent<{
+export const H4: FunctionComponent<{
   color?: KeyColors;
   emphasis?: KeyEmphasis;
 }> = ({ children, color, emphasis }) => (

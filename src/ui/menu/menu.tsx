@@ -32,6 +32,10 @@ const links = [
     name: 'Optimization',
   },
   {
+    path: '/architecture',
+    name: 'Architecture',
+  },
+  {
     path: '/folder',
     name: 'Folder',
   },
@@ -118,6 +122,22 @@ const links = [
   {
     path: '/api-gateway',
     name: 'Api gateway',
+  },
+  {
+    path: '/universal-link',
+    name: 'Universal link',
+  },
+  {
+    path: '/deep-link',
+    name: 'Deep link',
+  },
+  {
+    path: '/push-notification',
+    name: 'Push notification',
+  },
+  {
+    path: '/code-push',
+    name: 'Code push',
   },
 ];
 
