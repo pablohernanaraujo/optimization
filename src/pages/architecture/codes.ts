@@ -58,3 +58,8 @@ export const ModalBottom: FunctionComponent<ModalBottomProps> = ({
   </Modal>
 );
 `;
+
+export const environments = `develop
+stage
+production/master
+`;

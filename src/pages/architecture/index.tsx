@@ -6,7 +6,7 @@ import { Link, NavigationLink } from '../../ui/link';
 import { Spacer } from '../../ui/spacer';
 import { CodeBlock } from '../../ui/code-block';
 import { H2, H3, H4, P, Span, LI } from '../../ui/typography';
-import { locationFiles, component } from './codes';
+import { locationFiles, component, environments } from './codes';
 
 export const Architecture: FunctionComponent = () => (
   <ScreenWrapper>
@@ -281,6 +281,278 @@ export const Architecture: FunctionComponent = () => (
         menos se preocupan. Tal vez porque no está conectado con el código en sí
         la mayor parte del tiempo y probablemente no sea tan emocionante, pero
         no menos importante.
+      </P>
+      <P>
+        En producción, generalmente debemos ocuparnos de las siguientes cosas:
+      </P>
+      <ul>
+        <LI>Analytics.</LI>
+        <P>
+          Hay varias formas de trackear eventos, como{' '}
+          <Link href="https://analytics.google.com/" target="_blank">
+            Google analitycs
+          </Link>
+          ,{' '}
+          <Link href="https://firebase.google.com/" target="_blank">
+            Firebase analitycs
+          </Link>
+          ,{' '}
+          <Link href="https://segment.com/" target="_blank">
+            Segment
+          </Link>{' '}
+          o{' '}
+          <Link href="https://www.hotjar.com/" target="_blank">
+            Hotjar
+          </Link>
+          .
+        </P>
+        <LI>Status monitoring.</LI>
+        <P>
+          Tambien necesitamos manejar y monitorear los errores de las
+          aplicaciones, para eso podemos usar herramientas como{' '}
+          <Link href="https://sentry.io/welcome/" target="_blank">
+            Sentry
+          </Link>{' '}
+          o{' '}
+          <Link href="https://www.bugsnag.com/" target="_blank">
+            Bugsnag
+          </Link>
+          .
+        </P>
+        <LI>Performance.</LI>
+        <P>
+          Un tema sensible es el rendimiento, esto incluye tiempoes de
+          respuestas y render, para web tenemos esta herramienta de google{' '}
+          <Link
+            href="https://developers.google.com/web/tools/lighthouse/"
+            target="_blank"
+          >
+            Lighthouse
+          </Link>{' '}
+          y para native{' '}
+          <Link href="https://firebase.google.com/?hl=es" target="_blank">
+            Firebase performance
+          </Link>{' '}
+          pero es un tema mas complejo Launch time, Memory leakage, Large app
+          size son cosas que tenemos que tener cuidado a la hora de querer que
+          nuestras app mejore su rendimiento, vamos a verlo en profundidad mas
+          adelante.
+        </P>
+        <LI>A/B testing.</LI>
+        <P>
+          Todo tipo de soluciones de pruebas A / B o feature flags.{' '}
+          <Link href="https://leananalytics.io/" target="_blank">
+            Leananalytics
+          </Link>{' '}
+          es una excelente herramienta, en algunos casos hay que agregarle cosas
+          para poder medir casos más complejos.{' '}
+          <Link
+            href="https://www.split.io/blog/controlled-rollout-react-native/"
+            target="_blank"
+          >
+            Split
+          </Link>{' '}
+          es otra muy buena herramienta, más completa pero paga.{' '}
+          <Link href="https://firebase.google.com/?hl=es" target="_blank">
+            Firebase A/B testing
+          </Link>{' '}
+          y obvio Firebase tambien tiene.
+        </P>
+        <LI>Caching.</LI>
+        <P>
+          Herramientas cómo{' '}
+          <Link href="https://varnish-cache.org/" target="_blank">
+            Varnish
+          </Link>
+          ,{' '}
+          <Link href="https://www.cloudflare.com/es-es/" target="_blank">
+            Cloudflare
+          </Link>{' '}
+          o desarrollo de Api gateway podría ser una muy buena solución.
+        </P>
+      </ul>
+      <Spacer size="xs" />
+      <H3>6 - Development</H3>
+      <H4>API</H4>
+      <P>
+        Una API cómoda para trabajar localmente es la segunda cosa asombrosa que
+        podemos hacer para mejorar la experiencia del desarrollador y la
+        velocidad de desarrollo. Por lo general, proporcionar API localmente
+        para los ingenieros de front-end no es un proceso trivial: esto podría
+        incluir la instalación de tools o frameworks con los que no están
+        familiarizados. Incluso si la configuración está acoplada, esto puede
+        requerir una gran cantidad de recursos informáticos de las máquinas del
+        desarrollador (si no es así, esto se puede considerar como una
+        configuración). ¿Cuál puede ser una solución en este caso? API servida
+        externamente. Este puede ser un solo servidor para todos los
+        programadores o algún mecanismo para iniciar fácilmente su propio
+        servidor dedicado para el desarrollo.
+      </P>
+      <H4>CI</H4>
+      <P>
+        Continuous integration es una parte muy importante. Hay muchas tools
+        para poder ahcer esto como por ejemplo{' '}
+        <Link href="https://circleci.com/" target="_blank">
+          Circle ci
+        </Link>{' '}
+        ,{' '}
+        <Link href="https://www.travis-ci.com/" target="_blank">
+          Travis ci
+        </Link>{' '}
+        y algunas ya vienen integradas con por ejemplo en{' '}
+        <Link href="https://github.com/" target="_blank">
+          Github actions
+        </Link>{' '}
+        o{' '}
+        <Link href="https://www.heroku.com/" target="_blank">
+          Heroku ci
+        </Link>
+        .
+      </P>
+      <P>
+        La configuración de CI del proyecto en particular, en mi opinión,
+        debería ser parte del trabajo del equipo, que está trabajando en el
+        proyecto. Esto le da la oportunidad al CI de ser estable porque hay
+        personas que están interesadas en el, lo use todos los días y tenga el
+        poder y las habilidades para arreglarlo, configurarlo y mejorarlo.
+      </P>
+      <H4>Environments</H4>
+      <P>
+        El poder manejar ambientes para las diferentes etapas del desarrollo es
+        fundamental en todo proyecto.
+      </P>
+      <CodeBlock
+        code={environments}
+        language="javascript"
+        showLineNumbers={false}
+      />
+      <P>
+        Son los más comunes pero podrían llamarse algunos de diferente formas
+        como <Span>test</Span>, podría no usar alguno como <Span>stage</Span>{' '}
+        depende del proyecto y el equipo.
+      </P>
+      <Spacer size="xs" />
+      <H3>7 - Modularity</H3>
+      <P>
+        Cuanto mas grande sea donde trabajemos, el código podría crecer muy
+        rápido y exponecialmente no es algo raro. De ahí surgen problemas CI
+        lentos, problemas de trabajo colaborativo, test lentos, etc. Entoces una
+        gran parte de la arquitectura es decidir que tan granular queremos
+        nuestras aplicaciones o módulos independientes.
+      </P>
+      <P>Hay 4 modelos básicos</P>
+      <ul>
+        <LI>Monolith.</LI>
+        <P>
+          Un gran repositorio con un solo proyecto y todo el código allí, todos
+          los equipos están trabajando juntos en este repositorio al mismo
+          tiempo.
+        </P>
+        <LI>Monorepo.</LI>
+        <P>
+          Muchos proyectos, pero todavía un gran repositorio. Todos los equipos
+          siguen trabajando en el mismo repositorio, pero con diferentes
+          proyectos. Ya existen oportunidades para solucionar algunos problemas,
+          que tenemos con un enfoque monolítico, ejecutando pipelines solo para
+          proyectos específicos, los proyectos tienen conjuntos de pruebas más
+          pequeños, etc. Herramientas como Lerna pueden hacer su vida mucho más
+          fácil en caso de que elija este enfoque.
+        </P>
+        <LI>Repo per project.</LI>
+        <P>
+          Cada proyecto tiene su propio repositorio y todas las cosas de apoyo,
+          como canalizaciones de CI, implementaciones, etc.
+        </P>
+        <LI>Micro frontend.</LI>
+        <P>
+          La idea detrás de Micro Frontends es pensar en un sitio web o
+          aplicación web como una composición de características que son
+          propiedad de equipos independientes. Cada equipo tiene un área de
+          negocio definida o misión de la que se preocupa y se especializa. Un
+          equipo es cross functional y desarrolla sus características
+          end-to-end, desde la base de datos hasta la interfaz de usuario.
+        </P>
+      </ul>
+      <P>
+        En todos esos modelos, el proyecto puede significar una aplicación de
+        frontend independiente, una página, un módulo de frontend independiente,
+        etc. Esto depende de cuán granular desee decidir dividir sus
+        aplicaciones de front-end. En la mayoría de los casos, esta división
+        debe estar sincronizada con la estructura organizativa deseada y la
+        gestión de personas.
+      </P>
+      <P>
+        El segundo gran tema después de decidir cómo dividir su aplicación será
+        cómo conectar esas piezas (si decide dividir su aplicación).
+      </P>
+      <ul>
+        <LI>Build-time composition.</LI>
+        <P>
+          Sus proyectos pueden ser solo paquetes npm, instalados y compuestos
+          durante el tiempo de compilación.
+        </P>
+        <LI>Server-side composition.</LI>
+        <P>
+          Este enfoque generalmente incluye la representación del lado del
+          servidor y la composición que se realiza en un servidor.
+        </P>
+        <LI>Client-side composition.</LI>
+        <P>
+          Composición de los proyectos dentro del navegador. Además, es muy
+          importante mencionar la{' '}
+          <Link
+            href="https://webpack.js.org/blog/2020-10-10-webpack-5-release/#module-federation"
+            target="_blank"
+          >
+            Federación de módulos
+          </Link>
+          , un nuevo enfoque introducido en{' '}
+          <Link
+            href="https://webpack.js.org/blog/2020-10-10-webpack-5-release/#module-federation"
+            target="_blank"
+          >
+            Webpack 5
+          </Link>
+          .
+        </P>
+        <LI>Route composition.</LI>
+        <P>Súper simple: solo cada proyecto tiene su propia URL.</P>
+      </ul>
+      <H3>8 - Testing</H3>
+      <P>
+        Hay tantos recursos disponibles sobre pruebas para aplicaciones de
+        front-end, por lo que trataría de no entrar en detalles, que puede
+        encontrar fácilmente, pero centrarme más en los problemas de las grandes
+        organizaciones y en cómo podemos resolverlos.
+      </P>
+      <P>
+        Posibles niveles de prueba que desea tener en tu estrategia de prueba:
+      </P>
+      <ul>
+        <LI>Unit testing</LI>
+        <LI>Integration testing</LI>
+        <LI>E2E testing</LI>
+      </ul>
+      <P>
+        Además, como segundo paso, debemos unificarlos en diferentes
+        aplicaciones frontend de la empresa, para que la gente no tenga
+        preguntas sobre cómo y qué probar cuando se cambia a un proyecto
+        diferente.
+      </P>
+      <P>
+        Y el último, pruebas de producción sobre los flujos comerciales más
+        importantes. Lo más probable es que funcionen mejor si los ejecuta
+        directamente en el entorno de producción, pero también puede ser posible
+        una modificación cuando podemos ejecutar tales pruebas en un entorno de
+        staging/test, que está muy cerca del de producción o incluso lo refleja.
+        Hay un artículo muy bueno sobre este tema,{' '}
+        <Link
+          href="https://copyconstruct.medium.com/testing-in-production-the-safe-way-18ca102d0ef1"
+          target="_blank"
+        >
+          aquí
+        </Link>
+        .
       </P>
     </Group>
     <Group type="footer">
