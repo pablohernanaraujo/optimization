@@ -28,115 +28,115 @@ const MenuItemCurrent = styled(MenuItem)`
 
 const links = [
   {
-    path: '/optimization',
+    path: '/optimization/',
     name: 'Optimization',
   },
   {
-    path: '/architecture',
+    path: '/optimization/architecture/',
     name: 'Architecture',
   },
   {
-    path: '/folder',
+    path: '/optimization/folder/',
     name: 'Folder',
   },
   {
-    path: '/typescript',
+    path: '/optimization/typescript/',
     name: 'Typescript',
   },
   {
-    path: '/hooks',
+    path: '/optimization/hooks/',
     name: 'Hooks',
   },
   {
-    path: '/styled-components',
+    path: '/optimization/styled-components/',
     name: 'Styled components',
   },
   {
-    path: '/design-system',
+    path: '/optimization/design-system/',
     name: 'Design system',
   },
   {
-    path: '/documentation',
+    path: '/optimization/documentation/',
     name: 'Documentation',
   },
   {
-    path: '/react-router-dom',
+    path: '/optimization/react-router-dom/',
     name: 'React router dom',
   },
   {
-    path: '/react-navigation',
+    path: '/optimization/react-navigation/',
     name: 'React navigation',
   },
   {
-    path: '/global-state',
+    path: '/optimization/global-state/',
     name: 'Global state',
   },
   {
-    path: '/aliases',
+    path: '/optimization/aliases/',
     name: 'Aliases',
   },
   {
-    path: '/multi-language',
+    path: '/optimization/multi-language/',
     name: 'Multi language',
   },
   {
-    path: '/development-tools',
+    path: '/optimization/development-tools/',
     name: 'Development tools',
   },
   {
-    path: '/prettier',
+    path: '/optimization/prettier/',
     name: 'Prettier',
   },
   {
-    path: '/eslint',
+    path: '/optimization/eslint/',
     name: 'Eslint',
   },
   {
-    path: '/jest',
+    path: '/optimization/jest/',
     name: 'Jest',
   },
   {
-    path: '/react-testing-library',
+    path: '/optimization/react-testing-library/',
     name: 'React testing library',
   },
   {
-    path: '/cypress',
+    path: '/optimization/cypress/',
     name: 'Cypress',
   },
   {
-    path: '/detox',
+    path: '/optimization/detox/',
     name: 'Detox',
   },
   {
-    path: '/test-driven-development',
+    path: '/optimization/test-driven-development/',
     name: 'Test driven development',
   },
   {
-    path: '/backend-for-frontend',
+    path: '/optimization/backend-for-frontend/',
     name: 'Backend for frontend',
   },
   {
-    path: '/ci-cd',
+    path: '/optimization/ci-cd/',
     name: 'CI/CD',
   },
   {
-    path: '/api-gateway',
+    path: '/optimization/api-gateway/',
     name: 'Api gateway',
   },
   {
-    path: '/universal-link',
+    path: '/optimization/universal-link/',
     name: 'Universal link',
   },
   {
-    path: '/deep-link',
+    path: '/optimization/deep-link/',
     name: 'Deep link',
   },
   {
-    path: '/push-notification',
+    path: '/optimization/push-notification/',
     name: 'Push notification',
   },
   {
-    path: '/code-push',
+    path: '/optimization/code-push/',
     name: 'Code push',
   },
 ];

@@ -5,22 +5,22 @@ import { Eslint } from './pages/eslint';
 
 const Routes = [
   {
-    path: '/optimization',
+    path: '/optimization/',
     component: Home,
     exact: true,
   },
   {
-    path: '/architecture',
+    path: '/optimization/architecture/',
     component: Architecture,
     exact: true,
   },
   {
-    path: '/prettier',
+    path: '/optimization/prettier/',
     component: Prettier,
     exact: true,
   },
   {
-    path: '/eslint',
+    path: '/optimization/eslint/',
     component: Eslint,
     exact: true,
   },
