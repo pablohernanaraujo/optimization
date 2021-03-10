@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useSetRecoilState } from 'recoil';
 
@@ -24,11 +25,13 @@ export const Login: FunctionComponent = () => {
     errors,
     setError,
     formState,
+    reset,
   } = useForm<Inputs>({
     mode: 'onChange',
   });
   const setIsAuth = useSetRecoilState(isAuth);
   const setUserData = useSetRecoilState(user);
+  const history = useHistory();
 
   const onSubmit = (data: Inputs) => {
     setLoading(true);
@@ -45,7 +48,9 @@ export const Login: FunctionComponent = () => {
             } else {
               console.log('No data available');
             }
+            reset();
             setLoading(false);
+            history.push('/optimization');
           });
         }
       })
