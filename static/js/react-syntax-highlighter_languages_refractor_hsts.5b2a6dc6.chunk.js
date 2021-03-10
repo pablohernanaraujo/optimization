@@ -1,2 +1,0 @@
-(this.webpackJsonpoptimization=this.webpackJsonpoptimization||[]).push([[55],{150:function(a,s,t){"use strict";function i(a){a.languages.hsts={directive:{pattern:/\b(?:max-age=|includeSubDomains|preload)/,alias:"keyword"},safe:{pattern:/\d{8,}/,alias:"selector"},unsafe:{pattern:/\d{1,7}/,alias:"function"}}}a.exports=i,i.displayName="hsts",i.aliases=[]}}]);
-//# sourceMappingURL=react-syntax-highlighter_languages_refractor_hsts.5b2a6dc6.chunk.js.map
