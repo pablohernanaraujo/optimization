@@ -6,7 +6,7 @@ import { Link, NavigationLink } from '../../ui/link';
 import { Spacer } from '../../ui/spacer';
 import { CodeBlock } from '../../ui/code-block';
 import { H2, H3, H4, P, LI, Span } from '../../ui/typography';
-import { screen, app, splashManager } from './codes';
+import { screen, app, splashManager, folders } from './codes';
 
 export const Lunar: FunctionComponent = () => (
   <ScreenWrapper>
@@ -35,7 +35,7 @@ export const Lunar: FunctionComponent = () => (
       <H4>PASO 1</H4>
       <P>
         En este paso solo nos vamos a enfocar en el ONB (Onboarding) y vamos a
-        agregar algunas básicas.
+        agregar algunas cosas básicas.
       </P>
       <P>
         <Link
@@ -75,11 +75,26 @@ export const Lunar: FunctionComponent = () => (
         fetch y actualizar los datos del usuario, verificar si hay alguna
         actualización y forzar update etc.
       </P>
+      <P>Estructura de carpetas</P>
+      <CodeBlock code={folders} language="javascript" showLineNumbers={false} />
+      <P>
+        Este es un ejemplo de como se podría armar la estructura de carpetas,
+        intentamos tener un orden el cual se pueda replicar en otros proyectos,
+        para que cuando un desarrollador pase de un proyecto a otro pueda
+        identificar fácilmente donde se encuentran los archivos.
+      </P>
+      <P>
+        Los nombres pueden variar dependiendo que decidan los desarroladores.
+      </P>
+      <H4>PASO 2</H4>
+      <P>En este paso vamos a avanzar con el DASH (Dashboard).</P>
+      <P>
+        Vamos a eliminar el menu hamburguesa y vamos a crear routeo de tabs.
+      </P>
     </Group>
     <Group type="footer">
-      <Spacer />
       <P color="white">
-        Realizado desde 1 de marzo del 2021 hasta el 15 de marzo de 2021.
+        Realizado desde 1 de marzo hasta el 15 de marzo del 2021.
       </P>
     </Group>
   </ScreenWrapper>

@@ -80,3 +80,27 @@ export const SplashManager = (): null => {
   return null;
 };
 `;
+
+export const folders = `src
+/ core
+  / api-hooks
+  / async-storage
+  / axios
+  / config
+  / splash-manager
+/ routing
+  / commons
+  / stacks
+    / logged
+      / dashboard
+      / kyc
+    / unlogged
+/ screens
+  / commons
+  / force-update
+  / logged
+  / unlogged
+/ store
+/ theme
+/ ui
+`;

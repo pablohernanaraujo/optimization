@@ -1,7 +1,11 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
+import { user } from '../../store';
 import styled from '../../theme/styled-components';
+import { database } from '../../firebase';
+import { Loader } from '../../ui/loader';
 
 const MenuWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.lightBackground};
@@ -26,162 +30,216 @@ const MenuItemCurrent = styled(MenuItem)`
   font-weight: 300;
 `;
 
-const links = [
+const unloggedLinks = [
   {
-    path: '/optimization',
-    name: 'Optimization',
+    path: '/',
+    name: 'Login',
   },
   {
-    path: '/architecture',
-    name: 'Architecture',
-  },
-  {
-    path: '/folder',
-    name: 'Folder',
-  },
-  {
-    path: '/typescript',
-    name: 'Typescript',
-  },
-  {
-    path: '/hooks/',
-    name: 'Hooks',
-  },
-  {
-    path: '/styled-components',
-    name: 'Styled components',
-  },
-  {
-    path: '/design-system',
-    name: 'Design system',
-  },
-  {
-    path: '/documentation',
-    name: 'Documentation',
-  },
-  {
-    path: '/react-router-dom',
-    name: 'React router dom',
-  },
-  {
-    path: '/react-navigation',
-    name: 'React navigation',
-  },
-  {
-    path: '/global-state',
-    name: 'Global state',
-  },
-  {
-    path: '/aliases',
-    name: 'Aliases',
-  },
-  {
-    path: '/multi-language',
-    name: 'Multi language',
-  },
-  {
-    path: '/development-tools',
-    name: 'Development tools',
-  },
-  {
-    path: '/prettier',
-    name: 'Prettier',
-  },
-  {
-    path: '/eslint',
-    name: 'Eslint',
-  },
-  {
-    path: '/jest',
-    name: 'Jest',
-  },
-  {
-    path: '/react-testing-library',
-    name: 'React testing library',
-  },
-  {
-    path: '/cypress',
-    name: 'Cypress',
-  },
-  {
-    path: '/detox',
-    name: 'Detox',
-  },
-  {
-    path: '/test-driven-development',
-    name: 'Test driven development',
-  },
-  {
-    path: '/backend-for-frontend',
-    name: 'Backend for frontend',
-  },
-  {
-    path: '/ci-cd',
-    name: 'CI/CD',
-  },
-  {
-    path: '/appcenter',
-    name: 'Appcenter',
-  },
-  {
-    path: '/bitrise',
-    name: 'Bitrise',
-  },
-  {
-    path: '/fastlane',
-    name: 'fastlane',
-  },
-  {
-    path: '/api-gateway',
-    name: 'Api gateway',
-  },
-  {
-    path: '/universal-link',
-    name: 'Universal link',
-  },
-  {
-    path: '/deep-link',
-    name: 'Deep link',
-  },
-  {
-    path: '/push-notification',
-    name: 'Push notification',
-  },
-  {
-    path: '/code-push',
-    name: 'Code push',
-  },
-  {
-    path: '/splash',
-    name: 'Splash',
-  },
-  {
-    path: '/lunar',
-    name: 'Lunar',
+    path: '/register',
+    name: 'Register',
   },
 ];
 
+// const links = [
+//   {
+//     path: '/',
+//     name: 'Login',
+//   },
+//   {
+//     path: '/register',
+//     name: 'Register',
+//   },
+//   {
+//     path: '/optimization',
+//     name: 'Optimization',
+//   },
+//   {
+//     path: '/architecture',
+//     name: 'Architecture',
+//   },
+//   {
+//     path: '/folder',
+//     name: 'Folder',
+//   },
+//   {
+//     path: '/typescript',
+//     name: 'Typescript',
+//   },
+//   {
+//     path: '/hooks/',
+//     name: 'Hooks',
+//   },
+//   {
+//     path: '/styled-components',
+//     name: 'Styled components',
+//   },
+//   {
+//     path: '/design-system',
+//     name: 'Design system',
+//   },
+//   {
+//     path: '/documentation',
+//     name: 'Documentation',
+//   },
+//   {
+//     path: '/react-router-dom',
+//     name: 'React router dom',
+//   },
+//   {
+//     path: '/react-navigation',
+//     name: 'React navigation',
+//   },
+//   {
+//     path: '/global-state',
+//     name: 'Global state',
+//   },
+//   {
+//     path: '/aliases',
+//     name: 'Aliases',
+//   },
+//   {
+//     path: '/multi-language',
+//     name: 'Multi language',
+//   },
+//   {
+//     path: '/development-tools',
+//     name: 'Development tools',
+//   },
+//   {
+//     path: '/prettier',
+//     name: 'Prettier',
+//   },
+//   {
+//     path: '/eslint',
+//     name: 'Eslint',
+//   },
+//   {
+//     path: '/jest',
+//     name: 'Jest',
+//   },
+//   {
+//     path: '/react-testing-library',
+//     name: 'React testing library',
+//   },
+//   {
+//     path: '/cypress',
+//     name: 'Cypress',
+//   },
+//   {
+//     path: '/detox',
+//     name: 'Detox',
+//   },
+//   {
+//     path: '/test-driven-development',
+//     name: 'Test driven development',
+//   },
+//   {
+//     path: '/backend-for-frontend',
+//     name: 'Backend for frontend',
+//   },
+//   {
+//     path: '/ci-cd',
+//     name: 'CI/CD',
+//   },
+//   {
+//     path: '/appcenter',
+//     name: 'Appcenter',
+//   },
+//   {
+//     path: '/bitrise',
+//     name: 'Bitrise',
+//   },
+//   {
+//     path: '/fastlane',
+//     name: 'fastlane',
+//   },
+//   {
+//     path: '/api-gateway',
+//     name: 'Api gateway',
+//   },
+//   {
+//     path: '/universal-link',
+//     name: 'Universal link',
+//   },
+//   {
+//     path: '/deep-link',
+//     name: 'Deep link',
+//   },
+//   {
+//     path: '/push-notification',
+//     name: 'Push notification',
+//   },
+//   {
+//     path: '/code-push',
+//     name: 'Code push',
+//   },
+//   {
+//     path: '/splash',
+//     name: 'Splash',
+//   },
+//   {
+//     path: '/lunar',
+//     name: 'Lunar',
+//   },
+// ];
+
+interface MenuList {
+  path: string;
+  name: string;
+}
+
 export const Menu: FunctionComponent = () => {
+  const [loading, setLoading] = useState(false);
+  const [menuList, setMenuList] = useState<MenuList[]>(unloggedLinks);
   const { pathname } = useLocation();
+  const userData = useRecoilValue(user);
+
+  useEffect(() => {
+    if (userData) {
+      setLoading(true);
+      const getRoll = database.ref('roles/' + userData.role);
+      getRoll.on('value', (snap) => {
+        const accessLinks = snap.val();
+        if (accessLinks) {
+          const linksList: MenuList[] = [];
+          Object.entries(accessLinks).forEach(([key, value]) => {
+            linksList.push({
+              path: value as string,
+              name: key,
+            });
+          });
+          setMenuList(linksList);
+        }
+        setLoading(false);
+      });
+    } else {
+      setMenuList(unloggedLinks);
+    }
+  }, [userData]);
 
   return (
     <MenuWrapper>
       <MenuContent>
-        {links.map((link) => {
-          if (link.path === pathname) {
-            return (
-              <MenuItemCurrent key={link.path} to={link.path}>
-                {link.name}
-              </MenuItemCurrent>
-            );
-          }
+        {loading ? (
+          <Loader />
+        ) : (
+          menuList.map((link) => {
+            if (link.path === pathname) {
+              return (
+                <MenuItemCurrent key={link.path} to={link.path}>
+                  {link.name}
+                </MenuItemCurrent>
+              );
+            }
 
-          return (
-            <MenuItem key={link.path} to={link.path}>
-              {link.name}
-            </MenuItem>
-          );
-        })}
+            return (
+              <MenuItem key={link.path} to={link.path}>
+                {link.name}
+              </MenuItem>
+            );
+          })
+        )}
       </MenuContent>
     </MenuWrapper>
   );
