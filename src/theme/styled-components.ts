@@ -11,6 +11,7 @@ const {
   createGlobalStyle,
   css,
   ThemeContext,
+  keyframes,
 } = styledComponents as styledComponents.ThemedStyledComponentsModule<{
   colors: ColorsType;
   emphasis: EmphasisType;
@@ -21,5 +22,5 @@ const {
   };
 }>;
 
-export { ThemeProvider, createGlobalStyle, css, ThemeContext };
+export { ThemeProvider, createGlobalStyle, css, ThemeContext, keyframes };
 export default styled;

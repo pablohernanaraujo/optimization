@@ -1,7 +1,11 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
+import { user } from '../../store';
 import styled from '../../theme/styled-components';
+import { database } from '../../firebase';
+import { Loader } from '../../ui/loader';
 
 const MenuWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.lightBackground};
@@ -26,142 +30,80 @@ const MenuItemCurrent = styled(MenuItem)`
   font-weight: 300;
 `;
 
-const links = [
+const unloggedLinks = [
   {
-    path: '/optimization/',
-    name: 'Optimization',
+    path: '/',
+    name: 'Login',
   },
   {
-    path: '/optimization/architecture/',
-    name: 'Architecture',
-  },
-  {
-    path: '/optimization/folder/',
-    name: 'Folder',
-  },
-  {
-    path: '/optimization/typescript/',
-    name: 'Typescript',
-  },
-  {
-    path: '/optimization/hooks/',
-    name: 'Hooks',
-  },
-  {
-    path: '/optimization/styled-components/',
-    name: 'Styled components',
-  },
-  {
-    path: '/optimization/design-system/',
-    name: 'Design system',
-  },
-  {
-    path: '/optimization/documentation/',
-    name: 'Documentation',
-  },
-  {
-    path: '/optimization/react-router-dom/',
-    name: 'React router dom',
-  },
-  {
-    path: '/optimization/react-navigation/',
-    name: 'React navigation',
-  },
-  {
-    path: '/optimization/global-state/',
-    name: 'Global state',
-  },
-  {
-    path: '/optimization/aliases/',
-    name: 'Aliases',
-  },
-  {
-    path: '/optimization/multi-language/',
-    name: 'Multi language',
-  },
-  {
-    path: '/optimization/development-tools/',
-    name: 'Development tools',
-  },
-  {
-    path: '/optimization/prettier/',
-    name: 'Prettier',
-  },
-  {
-    path: '/optimization/eslint/',
-    name: 'Eslint',
-  },
-  {
-    path: '/optimization/jest/',
-    name: 'Jest',
-  },
-  {
-    path: '/optimization/react-testing-library/',
-    name: 'React testing library',
-  },
-  {
-    path: '/optimization/cypress/',
-    name: 'Cypress',
-  },
-  {
-    path: '/optimization/detox/',
-    name: 'Detox',
-  },
-  {
-    path: '/optimization/test-driven-development/',
-    name: 'Test driven development',
-  },
-  {
-    path: '/optimization/backend-for-frontend/',
-    name: 'Backend for frontend',
-  },
-  {
-    path: '/optimization/ci-cd/',
-    name: 'CI/CD',
-  },
-  {
-    path: '/optimization/api-gateway/',
-    name: 'Api gateway',
-  },
-  {
-    path: '/optimization/universal-link/',
-    name: 'Universal link',
-  },
-  {
-    path: '/optimization/deep-link/',
-    name: 'Deep link',
-  },
-  {
-    path: '/optimization/push-notification/',
-    name: 'Push notification',
-  },
-  {
-    path: '/optimization/code-push/',
-    name: 'Code push',
+    path: '/register',
+    name: 'Register',
   },
 ];
 
+interface MenuList {
+  path: string;
+  name: string;
+}
+
 export const Menu: FunctionComponent = () => {
+  const [loading, setLoading] = useState(false);
+  const [menuList, setMenuList] = useState<MenuList[]>(unloggedLinks);
   const { pathname } = useLocation();
+  const userData = useRecoilValue(user);
+
+  useEffect(() => {
+    if (userData) {
+      setLoading(true);
+      const getRoll = database.ref('roles/' + userData.role);
+      getRoll.on('value', (snap) => {
+        const accessLinks = snap.val();
+        if (accessLinks) {
+          const linksList: MenuList[] = [];
+          Object.entries(accessLinks).forEach(([key, value]) => {
+            if (key === 'Optimization') {
+              linksList.unshift({
+                path: value as string,
+                name: key,
+              });
+            } else {
+              linksList.push({
+                path: value as string,
+                name: key,
+              });
+            }
+          });
+          setMenuList(linksList);
+        }
+        setLoading(false);
+      });
+    } else {
+      setMenuList(unloggedLinks);
+    }
+  }, [userData]);
 
   return (
     <MenuWrapper>
       <MenuContent>
-        {links.map((link) => {
-          if (link.path === pathname) {
-            return (
-              <MenuItemCurrent key={link.path} to={link.path}>
-                {link.name}
-              </MenuItemCurrent>
-            );
-          }
+        {loading ? (
+          <Loader />
+        ) : (
+          menuList.map((link) => {
+            if (link.path === pathname) {
+              return (
+                <MenuItemCurrent key={link.path} to={link.path}>
+                  {link.name}
+                </MenuItemCurrent>
+              );
+            }
 
-          return (
-            <MenuItem key={link.path} to={link.path}>
-              {link.name}
-            </MenuItem>
-          );
-        })}
+            return (
+              <MenuItem key={link.path} to={link.path}>
+                {link.name}
+              </MenuItem>
+            );
+          })
+        )}
       </MenuContent>
     </MenuWrapper>
   );
