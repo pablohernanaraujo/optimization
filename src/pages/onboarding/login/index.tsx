@@ -3,14 +3,14 @@ import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useSetRecoilState } from 'recoil';
 
-import { isAuth, user } from '../../store';
-import { ScreenWrapper } from '../../ui/screen-wrapper';
-import { Group } from '../../ui/group';
-import { TextField } from '../../ui/text-field';
-import { Submit } from '../../ui/buttons';
-import { Spacer } from '../../ui/spacer';
-import { H2, P } from '../../ui/typography';
-import { auth, database } from '../../firebase';
+import { isAuth, user } from '../../../store';
+import { ScreenWrapper } from '../../../ui/screen-wrapper';
+import { Group } from '../../../ui/group';
+import { TextField } from '../../../ui/text-field';
+import { Submit } from '../../../ui/buttons';
+import { Spacer } from '../../../ui/spacer';
+import { H2, P } from '../../../ui/typography';
+import { auth, database } from '../../../firebase';
 
 interface Inputs {
   email: string;
@@ -55,18 +55,11 @@ export const Login: FunctionComponent = () => {
         }
       })
       .catch((error) => {
-        console.log('ERROR', error);
         setLoading(false);
-        if (error.code === 'auth/user-not-found') {
-          setError('password', {
-            type: 'unexist',
-          });
-        }
-        if (error.code === 'auth/wrong-password') {
-          setError('password', {
-            type: 'wrong-password',
-          });
-        }
+        setError('password', {
+          type: 'error',
+          message: error.message,
+        });
       });
   };
 
@@ -81,46 +74,30 @@ export const Login: FunctionComponent = () => {
             name="email"
             type="text"
             label="Email"
-            placeholder="Ingrese su email"
+            placeholder="Enter your email"
             validation={register({
-              required: 'Required',
+              required: 'The field is required',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: 'Enter a valid e-mail address',
+                message: 'The email is invalid',
               },
             })}
-            error={
-              (errors.email &&
-                errors.email.type === 'required' &&
-                'El campo email es requerido') ||
-              (errors.email &&
-                errors.email.type === 'pattern' &&
-                'El email es invalido') ||
-              undefined
-            }
+            error={errors.email?.message}
             autocomplete={false}
           />
           <TextField
             name="password"
             type="password"
             label="Password"
-            placeholder="Ingrese su password"
-            validation={register({ required: 'Required', minLength: 3 })}
-            error={
-              (errors.password &&
-                errors.password.type === 'required' &&
-                'El campo contraseña es requerido') ||
-              (errors.password &&
-                errors.password.type === 'minLength' &&
-                'Debe tener mínimo 3 letras') ||
-              (errors.password &&
-                errors.password.type === 'unexist' &&
-                'El usuario es inexistente') ||
-              (errors.password &&
-                errors.password.type === 'wrong-password' &&
-                'La contraseña es incorrecta') ||
-              undefined
-            }
+            placeholder="Enter your password"
+            validation={register({
+              required: 'The field is required',
+              minLength: {
+                value: 6,
+                message: 'Must be at least 6 letters',
+              },
+            })}
+            error={errors.password?.message}
             autocomplete={false}
           />
           <Spacer />

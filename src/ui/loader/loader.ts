@@ -13,3 +13,15 @@ export const Loader = styled.div`
   height: 11px;
   animation: ${spin} 2s linear infinite;
 `;
+
+export const FullScreenLoaderWrapper = styled.div`
+  background-color: ${({ theme }) => theme.colors.lightBackground};
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

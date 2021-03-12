@@ -41,149 +41,6 @@ const unloggedLinks = [
   },
 ];
 
-// const links = [
-//   {
-//     path: '/',
-//     name: 'Login',
-//   },
-//   {
-//     path: '/register',
-//     name: 'Register',
-//   },
-//   {
-//     path: '/optimization',
-//     name: 'Optimization',
-//   },
-//   {
-//     path: '/architecture',
-//     name: 'Architecture',
-//   },
-//   {
-//     path: '/folder',
-//     name: 'Folder',
-//   },
-//   {
-//     path: '/typescript',
-//     name: 'Typescript',
-//   },
-//   {
-//     path: '/hooks/',
-//     name: 'Hooks',
-//   },
-//   {
-//     path: '/styled-components',
-//     name: 'Styled components',
-//   },
-//   {
-//     path: '/design-system',
-//     name: 'Design system',
-//   },
-//   {
-//     path: '/documentation',
-//     name: 'Documentation',
-//   },
-//   {
-//     path: '/react-router-dom',
-//     name: 'React router dom',
-//   },
-//   {
-//     path: '/react-navigation',
-//     name: 'React navigation',
-//   },
-//   {
-//     path: '/global-state',
-//     name: 'Global state',
-//   },
-//   {
-//     path: '/aliases',
-//     name: 'Aliases',
-//   },
-//   {
-//     path: '/multi-language',
-//     name: 'Multi language',
-//   },
-//   {
-//     path: '/development-tools',
-//     name: 'Development tools',
-//   },
-//   {
-//     path: '/prettier',
-//     name: 'Prettier',
-//   },
-//   {
-//     path: '/eslint',
-//     name: 'Eslint',
-//   },
-//   {
-//     path: '/jest',
-//     name: 'Jest',
-//   },
-//   {
-//     path: '/react-testing-library',
-//     name: 'React testing library',
-//   },
-//   {
-//     path: '/cypress',
-//     name: 'Cypress',
-//   },
-//   {
-//     path: '/detox',
-//     name: 'Detox',
-//   },
-//   {
-//     path: '/test-driven-development',
-//     name: 'Test driven development',
-//   },
-//   {
-//     path: '/backend-for-frontend',
-//     name: 'Backend for frontend',
-//   },
-//   {
-//     path: '/ci-cd',
-//     name: 'CI/CD',
-//   },
-//   {
-//     path: '/appcenter',
-//     name: 'Appcenter',
-//   },
-//   {
-//     path: '/bitrise',
-//     name: 'Bitrise',
-//   },
-//   {
-//     path: '/fastlane',
-//     name: 'fastlane',
-//   },
-//   {
-//     path: '/api-gateway',
-//     name: 'Api gateway',
-//   },
-//   {
-//     path: '/universal-link',
-//     name: 'Universal link',
-//   },
-//   {
-//     path: '/deep-link',
-//     name: 'Deep link',
-//   },
-//   {
-//     path: '/push-notification',
-//     name: 'Push notification',
-//   },
-//   {
-//     path: '/code-push',
-//     name: 'Code push',
-//   },
-//   {
-//     path: '/splash',
-//     name: 'Splash',
-//   },
-//   {
-//     path: '/lunar',
-//     name: 'Lunar',
-//   },
-// ];
-
 interface MenuList {
   path: string;
   name: string;
@@ -204,10 +61,17 @@ export const Menu: FunctionComponent = () => {
         if (accessLinks) {
           const linksList: MenuList[] = [];
           Object.entries(accessLinks).forEach(([key, value]) => {
-            linksList.push({
-              path: value as string,
-              name: key,
-            });
+            if (key === 'Optimization') {
+              linksList.unshift({
+                path: value as string,
+                name: key,
+              });
+            } else {
+              linksList.push({
+                path: value as string,
+                name: key,
+              });
+            }
           });
           setMenuList(linksList);
         }

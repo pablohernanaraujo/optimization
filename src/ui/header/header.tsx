@@ -4,6 +4,7 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import { isAuth, user } from '../../store';
 import styled from '../../theme/styled-components';
 import { auth } from '../../firebase';
+import { H4 } from '../../ui/typography';
 
 const HeaderWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.darkBackground};
@@ -21,6 +22,15 @@ const Title = styled.h1`
   font-weight: 500;
 `;
 
+const ContentRightWrpper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const NameWrapper = styled.div`
+  margin-right: ${({ theme }) => theme.spacers.s};
+`;
+
 const Button = styled.div`
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.white};
@@ -32,7 +42,7 @@ const Button = styled.div`
 
 export const Header: FunctionComponent = () => {
   const [isAuthStore, setIsAuthStore] = useRecoilState(isAuth);
-  const setUserData = useSetRecoilState(user);
+  const [userData, setUserData] = useRecoilState(user);
 
   const logout = useCallback(() => {
     auth
@@ -49,7 +59,14 @@ export const Header: FunctionComponent = () => {
   return (
     <HeaderWrapper>
       <Title>React development optimization</Title>
-      {isAuthStore && <Button onClick={logout}>Logout</Button>}
+      {isAuthStore && (
+        <ContentRightWrpper>
+          <NameWrapper>
+            <H4 color="white">{userData?.name}</H4>
+          </NameWrapper>
+          <Button onClick={logout}>Logout</Button>
+        </ContentRightWrpper>
+      )}
     </HeaderWrapper>
   );
 };

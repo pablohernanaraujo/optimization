@@ -9,6 +9,7 @@ const SubmitButton = styled.input`
   border: none;
   background-color: ${({ theme }) => theme.colors.primary};
   padding: ${({ theme }) => theme.spacers.s} ${({ theme }) => theme.spacers.l};
+  text-transform: uppercase;
   :focus {
     outline: none !important;
     opacity: ${({ theme }) => theme.emphasis.low};
@@ -22,6 +23,7 @@ const DisabledButton = styled.div`
   background-color: ${({ theme }) => theme.colors.disabledBackground};
   padding: ${({ theme }) => theme.spacers.s} ${({ theme }) => theme.spacers.l};
   display: inline-block;
+  text-transform: uppercase;
 `;
 
 const LoadingButton = styled.div`
