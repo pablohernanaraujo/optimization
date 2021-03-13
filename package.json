@@ -33,7 +33,9 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "heroku-postbuild": "npm run build",
-    "start": "node server.js"
+    "start": "node server.js",
+    "lint": "eslint \"*/**/*.{js,ts,tsx}\" --max-warnings=0",
+    "typescript": "tsc"
   },
   "eslintConfig": {
     "extends": [
