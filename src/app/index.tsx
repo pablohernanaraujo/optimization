@@ -2,21 +2,21 @@ import React, { FunctionComponent, useState, useEffect } from 'react';
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { isAuth, user } from './store';
-import ThemeProvider from './theme/context';
-import { GlobalStyling } from './theme/global-styling';
-import { Header } from './ui/header';
-import { Menu } from './ui/menu';
-import { FullScreenLoaderWrapper, Loader } from './ui/loader';
-import { auth, database } from './firebase';
+import { isAuth, user } from '../store';
+import ThemeProvider from '../theme/context';
+import { GlobalStyling } from '../theme/global-styling';
+import { Header } from '../ui/header';
+import { Menu } from '../ui/menu';
+import { FullScreenLoaderWrapper, Loader } from '../ui/loader';
+import { auth, database } from '../firebase';
 
-import { Login } from './pages/onboarding/login';
-import { Register } from './pages/onboarding/register';
-import { Home } from './pages/home';
-import { Architecture } from './pages/architecture';
-import { Prettier } from './pages/prettier';
-import { Lunar } from './pages/lunar';
-import { NotFound } from './pages/not-found';
+import { Login } from '../pages/onboarding/login';
+import { Register } from '../pages/onboarding/register';
+import { Home } from '../pages/home';
+import { Architecture } from '../pages/architecture';
+import { Prettier } from '../pages/prettier';
+import { Lunar } from '../pages/lunar';
+import { NotFound } from '../pages/not-found';
 
 const PrivateRoute: FunctionComponent<{ path: string }> = ({
   children,
