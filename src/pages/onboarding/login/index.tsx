@@ -63,7 +63,6 @@ export const Login: FunctionComponent = () => {
       });
   };
 
-  console.log('VALID', formState.isDirty, formState.isValid);
   return (
     <ScreenWrapper>
       <Group type="header">
