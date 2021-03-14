@@ -20,6 +20,7 @@ const {
     fontSize: FontSizeType;
     fontWeight: FontWeightType;
   };
+  isMobile: boolean;
 }>;
 
 export { ThemeProvider, createGlobalStyle, css, ThemeContext, keyframes };

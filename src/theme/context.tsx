@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { ThemeProvider as Provider } from 'styled-components';
+import { isMobile } from 'react-device-detect';
 
 import { colors } from './colors';
 import { emphasis } from './emphasis';
@@ -19,6 +20,7 @@ const ThemeProvider: FunctionComponent = ({
         fontSize,
         fontWeight,
       },
+      isMobile,
     }}
   >
     {children}
