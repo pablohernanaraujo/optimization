@@ -7,4 +7,9 @@ export const ScreenWrapper = styled.div`
   justify-content: space-between;
   overflow-y: scroll;
   grid-column: 2 / span 2;
+  ${({ theme }) =>
+    theme.isMobile &&
+    `
+    height: calc(100vh - 83px);
+  `};
 `;

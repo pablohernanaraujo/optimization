@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
+import { isMobile } from 'react-device-detect';
 
-import { isAuth, user } from '../../store';
+import { isAuth, user, showMenu } from '../../store';
 import styled from '../../theme/styled-components';
 import { auth } from '../../firebase';
 import { H4 } from '../../ui/typography';
@@ -40,9 +41,21 @@ const Button = styled.div`
   text-transform: uppercase;
 `;
 
+const IconWArapper = styled.div`
+  width: 120px;
+  display: flex;
+  align-items: center;
+`;
+
+const Icon = styled.img`
+  width: 36px;
+  margin-right: ${({ theme }) => theme.spacers.xs};
+`;
+
 export const Header: FunctionComponent = () => {
   const [isAuthStore, setIsAuthStore] = useRecoilState(isAuth);
   const [userData, setUserData] = useRecoilState(user);
+  const setShowMenu = useSetRecoilState(showMenu);
 
   const logout = useCallback(() => {
     auth
@@ -58,7 +71,17 @@ export const Header: FunctionComponent = () => {
 
   return (
     <HeaderWrapper>
-      <Title>React development optimization</Title>
+      {isMobile ? (
+        <IconWArapper>
+          <Icon
+            src="./images/svg/menu-white-48dp.svg"
+            onClick={() => setShowMenu(true)}
+          />
+          <Title>RDO</Title>
+        </IconWArapper>
+      ) : (
+        <Title>React development optimization</Title>
+      )}
       {isAuthStore && (
         <ContentRightWrpper>
           <NameWrapper>

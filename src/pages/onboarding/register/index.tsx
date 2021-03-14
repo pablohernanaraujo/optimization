@@ -145,6 +145,7 @@ export const Register: FunctionComponent = () => {
             disabled={!formState.isDirty || !formState.isValid}
             loading={loading}
           />
+          <Spacer size="l" />
         </form>
       </Group>
       <Group type="footer">
