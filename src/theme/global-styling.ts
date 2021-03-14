@@ -29,6 +29,10 @@ body {
   grid-template-columns: minmax(120px, 220px) auto auto;
   grid-template-rows: 90px auto auto;
   height: 100vh;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 }
 /**
 * Render the main element consistently in IE.
