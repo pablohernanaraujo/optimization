@@ -5,6 +5,11 @@ import styled from '../../theme/styled-components';
 const TextFieldWrapper = styled.div`
   width: 40%;
   margin-bottom: ${({ theme }) => theme.spacers.s};
+  ${({ theme }) =>
+    theme.isMobile &&
+    `
+    width: 95%;
+  `};
 `;
 
 const Label = styled.div`
@@ -20,6 +25,7 @@ const TextInput = styled.input<{ error?: string }>`
   color: ${({ theme }) => theme.colors.text};
   border: 1px ${({ theme }) => theme.colors.highlight} solid;
   padding: 6px;
+  appearance: none;
   ${({ theme, error }) =>
     error &&
     `

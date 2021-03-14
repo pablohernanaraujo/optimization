@@ -1,16 +1,29 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { isMobile } from 'react-device-detect';
 
-import { user } from '../../store';
+import { user, showMenu } from '../../store';
 import styled from '../../theme/styled-components';
 import { database } from '../../firebase';
 import { Loader } from '../../ui/loader';
 
-const MenuWrapper = styled.div`
+const MenuWrapper = styled.div<{ isShowMenu: boolean }>`
   background-color: ${({ theme }) => theme.colors.lightBackground};
   overflow-y: scroll;
   height: calc(100vh - 90px);
+  ${({ theme, isShowMenu }) =>
+    theme.isMobile &&
+    `
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 10;
+    height: auto;
+    display: ${isShowMenu ? 'block' : 'none'};
+  `};
 `;
 
 const MenuContent = styled.div`
@@ -28,6 +41,13 @@ const MenuItem = styled(Link)`
 const MenuItemCurrent = styled(MenuItem)`
   color: ${({ theme }) => theme.colors.primary};
   font-weight: 300;
+`;
+
+const Icon = styled.img`
+  width: 36px;
+  position: absolute;
+  top: ${({ theme }) => theme.spacers.m};
+  right: ${({ theme }) => theme.spacers.m};
 `;
 
 const unloggedLinks = [
@@ -51,6 +71,7 @@ export const Menu: FunctionComponent = () => {
   const [menuList, setMenuList] = useState<MenuList[]>(unloggedLinks);
   const { pathname } = useLocation();
   const userData = useRecoilValue(user);
+  const [isShowMenu, setIsShowMenu] = useRecoilState(showMenu);
 
   useEffect(() => {
     if (userData) {
@@ -83,7 +104,13 @@ export const Menu: FunctionComponent = () => {
   }, [userData]);
 
   return (
-    <MenuWrapper>
+    <MenuWrapper isShowMenu={isShowMenu}>
+      {isMobile && (
+        <Icon
+          src="./images/svg/clear-black-48dp.svg"
+          onClick={() => setIsShowMenu(false)}
+        />
+      )}
       <MenuContent>
         {loading ? (
           <Loader />
@@ -98,7 +125,11 @@ export const Menu: FunctionComponent = () => {
             }
 
             return (
-              <MenuItem key={link.path} to={link.path}>
+              <MenuItem
+                key={link.path}
+                to={link.path}
+                onClick={() => (isMobile ? setIsShowMenu(false) : null)}
+              >
                 {link.name}
               </MenuItem>
             );
