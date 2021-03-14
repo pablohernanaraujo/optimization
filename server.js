@@ -6,6 +6,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, '/build')));
 
 app.get('*', (req, res) => {
+  res.redirect('https://' + req.headers.host + req.url);
   res.sendFile(path.join(__dirname + '/build/index.html'));
 });
 
