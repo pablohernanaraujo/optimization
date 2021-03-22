@@ -15,6 +15,7 @@ import { Register } from '../pages/onboarding/register';
 import { Home } from '../pages/home';
 import { Architecture } from '../pages/architecture';
 import { Prettier } from '../pages/prettier';
+import { PushNotifications } from '../pages/push-notifications';
 import { Lunar } from '../pages/lunar';
 import { NotFound } from '../pages/not-found';
 
@@ -102,6 +103,9 @@ export const App: FunctionComponent = () => {
               </PrivateRoute>
               <PrivateRoute path="/prettier">
                 <Prettier />
+              </PrivateRoute>
+              <PrivateRoute path="/push-notifications">
+                <PushNotifications />
               </PrivateRoute>
               <PrivateRoute path="/lunar">
                 <Lunar />

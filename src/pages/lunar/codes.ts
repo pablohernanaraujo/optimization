@@ -104,3 +104,57 @@ export const folders = `src
 / theme
 / ui
 `;
+
+export const proptypesPluginInstall = `npm i -D eslint-plugin-react`;
+
+export const proptypesPluginConfig = `"react/prop-types": [<enabled>, { ignore: <ignore>, customValidators: <customValidator>, skipUndeclared: <skipUndeclared> }]`;
+
+export const proptypesRecomended1 = `// Bad
+import PropTypes from 'prop-types';
+
+MyComponent.propTypes = {
+  optionalArray: PropTypes.array,
+  optionalBool: PropTypes.bool,
+  optionalFunc: PropTypes.func,
+  optionalNumber: PropTypes.number,
+  optionalObject: PropTypes.object,
+  optionalString: PropTypes.string.isRequired,
+}
+
+// Good
+import {array, bol, func, number, object, string} from 'prop-types';
+
+MyComponent.propTypes = {
+  optionalArray: array,
+  optionalBool: bool,
+  optionalFunc: func,
+  optionalNumber: number,
+  optionalObject: object,
+  optionalString: string.isRequired,
+}  
+`;
+
+export const proptypesRecomended2 = `// Bad
+import {object} from 'prop-types';
+
+MyComponent.propTypes = {
+  optionalObject1: object,
+  optionalObject2: object,
+  optionalObject3: object,
+}
+
+// Good
+import {objectOf, exact, shape, number, string} from 'prop-types';
+
+MyComponent.propTypes = {
+  optionalObject1: objectOf(number),
+  optionalObject2: shape({
+    color: string,
+    fontSize: number
+  }),
+  optionalObject3: exact({
+    name: string,
+    quantity: number.isRequired
+  }),
+}  
+`;
