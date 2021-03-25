@@ -7,7 +7,16 @@ import { Spacer } from '../../ui/spacer';
 import { CodeBlock } from '../../ui/code-block';
 import { H2, H3, P, LI } from '../../ui/typography';
 import { RegularImage } from '../../ui/images';
-import { installFirebaseApp, podInstall, runAndroid } from './codes';
+import {
+  installFirebaseApp,
+  podInstall,
+  runAndroid,
+  firebaseH,
+  endif,
+  cdios,
+  podInstallRepoUpdate,
+  runIos,
+} from './codes';
 
 export const PushNotifications: FunctionComponent = () => (
   <ScreenWrapper>
@@ -162,6 +171,80 @@ export const PushNotifications: FunctionComponent = () => (
         alt="create android app finish"
         device
       />
+      <H3>iOS configuration</H3>
+      <P>Volvemos a nuestro main project y seleccionamos iOS.</P>
+      <RegularImage
+        src="./images/push-notifications/18 - create ios app.png"
+        alt="create ios app"
+      />
+      <P>Creamos el iOS bundle ID que tiene que ser único.</P>
+      <RegularImage
+        src="./images/push-notifications/19 - ios bundle id.png"
+        alt="ios bundle id"
+      />
+      <P>Bajamos el archivos google services info plist.</P>
+      <RegularImage
+        src="./images/push-notifications/20 - google services info plist.png"
+        alt="google services info plist"
+      />
+      <P>
+        Ahora necesitmos abrir nuestros proyecto en XCode vamos a la carpeta
+        ios/(nombre del proyecto).xcworkspace.
+      </P>
+      <P>Lo primero que tenemos que hacer es colocar nuestro bundle id.</P>
+      <RegularImage
+        src="./images/push-notifications/21 - xcode bundle id.png"
+        alt="xcode bundle id"
+      />
+      <P>Importamos nuestro GoogleService-info.plist a nuestro proyecto.</P>
+      <RegularImage
+        src="./images/push-notifications/22 - xcode add file.png"
+        alt="xcode add file"
+      />
+      <P>Checkear que este seleccionado Copy items if needed.</P>
+      <RegularImage
+        src="./images/push-notifications/23 - copy items if needed.png"
+        alt="copy items if needed"
+      />
+      <P>Vas a poder ver que el archivo se agrego ap proyecto.</P>
+      <RegularImage
+        src="./images/push-notifications/24 - xcode add file success.png"
+        alt="xcode add file success"
+      />
+      <P>Buscamos y abrimos nuestro archivo AppDelegate.m y agregamos.</P>
+      <CodeBlock
+        code={firebaseH}
+        language="javascript"
+        showLineNumbers={false}
+      />
+      <RegularImage
+        src="./images/push-notifications/25 - xcode open add delegate m.png"
+        alt="xcode open add delegate m"
+      />
+      <P>En el mismo archivo buscmos la function didFinishingWithOptions.</P>
+      <RegularImage
+        src="./images/push-notifications/26 - did finish launching with options.png"
+        alt="did finishing with options"
+      />
+      <P>Y debajo de #endif colocamos.</P>
+      <CodeBlock code={endif} language="javascript" showLineNumbers={false} />
+      <RegularImage
+        src="./images/push-notifications/27 - fir app default app.png"
+        alt="fir app default app"
+      />
+      <P>Ahora vamos a la terminal y ponemos.</P>
+      <CodeBlock code={cdios} language="javascript" showLineNumbers={false} />
+      <Spacer size="xs" />
+      <CodeBlock
+        code={podInstallRepoUpdate}
+        language="javascript"
+        showLineNumbers={false}
+      />
+      <P>
+        Luego volvemos a nuestro root project y corremos nuestra aplicación.
+      </P>
+      <CodeBlock code={runIos} language="javascript" showLineNumbers={false} />
+      <P>Deberiamos ver correr nuestra aplicación correctamente.</P>
     </Group>
     <Group type="footer">
       <Spacer />

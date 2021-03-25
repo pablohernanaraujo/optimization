@@ -16,7 +16,7 @@ export const NivelThree: FunctionComponent = () => (
       <H2>Lunar consultoría</H2>
     </Group>
     <Group type="body">
-      <H3>Nivel 3</H3>
+      <H3>Próximamente</H3>
     </Group>
     <Group type="footer">
       <Spacer />
