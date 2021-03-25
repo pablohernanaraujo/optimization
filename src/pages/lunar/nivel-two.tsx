@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { ScreenWrapper } from '../../ui/screen-wrapper';
 import { SubHeader } from '../../ui/sub-header';
 import { Group } from '../../ui/group';
-import { Link } from '../../ui/link';
+import { Link, NavigationLink } from '../../ui/link';
 import { Spacer } from '../../ui/spacer';
 import { CodeBlock } from '../../ui/code-block';
 import { H2, H3, H4, P, LI, Span } from '../../ui/typography';
@@ -31,13 +31,70 @@ export const NivelTwo: FunctionComponent = () => (
         <LI emphasis="medium">Notificaciones push.</LI>
         <Spacer size="xs" />
       </ol>
-      <P>Contenido de B listado</P>
+      <P>
+        Vamos a instalar y aprender a usar{' '}
+        <NavigationLink to="/push-notifications">
+          Push notifications
+        </NavigationLink>
+      </P>
       <H3>C - Revisión de procesos de comunicación de usuarios</H3>
       <ol>
         <LI emphasis="medium">Servicio de mailing.</LI>
         <Spacer size="xs" />
       </ol>
-      <P>Contenido de C listado</P>
+      <P>
+        Con respecto a este tema la verdad es simple, podemos probar servicios
+        locales como.
+      </P>
+      <ol>
+        <LI emphasis="medium">
+          <Link href="https://arrobamail.com/" target="_blank">
+            Arrobamail.
+          </Link>
+        </LI>
+        <Spacer size="xs" />
+        <LI emphasis="medium">
+          <Link
+            href="https://argentinavirtual.ar/el-palomo-e-mail-marketing/"
+            target="_blank"
+          >
+            Argentina virtual.
+          </Link>
+        </LI>
+      </ol>
+      <P>O podemos ir a los conocidos internacionales.</P>
+      <ol>
+        <LI emphasis="medium">
+          <Link
+            href="https://www.constantcontact.com/es/home-page"
+            target="_blank"
+          >
+            Constant Contact.
+          </Link>
+        </LI>
+        <Spacer size="xs" />
+        <LI emphasis="medium">
+          <Link
+            href="https://www.sendinblue.com/email-marketing-software/"
+            target="_blank"
+          >
+            Send in blue.
+          </Link>
+        </LI>
+        <Spacer size="xs" />
+        <LI emphasis="medium">
+          <Link href="https://mailchimp.com/es/" target="_blank">
+            Mailchimp.
+          </Link>
+        </LI>
+        <Spacer size="xs" />
+        <LI emphasis="medium">
+          <Link href="https://aws.amazon.com/es/ses/" target="_blank">
+            Amazon simple email service.
+          </Link>
+        </LI>
+      </ol>
+      <P>Todo depende de cuanto podamos invertir.</P>
       <H3>D - Anticipar las librerías para suscripciones</H3>
       <ol>
         <LI emphasis="medium">Ingresar y editar ciclos previos.</LI>
@@ -58,7 +115,66 @@ export const NivelTwo: FunctionComponent = () => (
         <Spacer size="xs" />
         <LI emphasis="medium">Suscripciones internas versus externas.</LI>
       </ol>
-      <P>Contenido de D listado</P>
+      <P>Vamos a ver que tenemos para cobrar suscripciones dentro de la App.</P>
+      <ol>
+        <LI emphasis="medium">
+          <Link
+            href="https://www.revenuecat.com/platform/react-native"
+            target="_blank"
+          >
+            Revenue Cat.
+          </Link>
+        </LI>
+        <Spacer size="xs" />
+        <LI emphasis="medium">
+          <Link
+            href="https://qonversion.io/in-app-purchases-toolkit"
+            target="_blank"
+          >
+            Qonversion.
+          </Link>
+        </LI>
+      </ol>
+      <P>
+        Destaco estas dos SDK por que no cobran nada por mes si no superamos los
+        10k (10.0000) dolares, podría ser una muy buena forma gratis de empezar
+        a cobrar las suscripciones.
+      </P>
+      <P>Ahora vamos a ver las externas.</P>
+      <ol>
+        <LI emphasis="medium">
+          <Link
+            href="https://www.mercadopago.com.ar/developers/es/guides/online-payments/checkout-api/introduction"
+            target="_blank"
+          >
+            Mercado Pago.
+          </Link>
+        </LI>
+        <Spacer size="xs" />
+        <LI emphasis="medium">
+          <Link
+            href="https://stripe.com/docs/development/quickstart"
+            target="_blank"
+          >
+            Stripe.
+          </Link>
+        </LI>
+      </ol>
+      <P>
+        Las más usadas, obvio MP para Argentina y Stripe para el resto del
+        mundo, ojo que estás tambien pueden ser internar, pero MP es muy difícil
+        de integrar.
+      </P>
+      <P>
+        Las dos formas son muy buenas posibilidades, pero cosas que hay que
+        tener en cuenta, si vamos por las internar no solo son más dificiles de
+        integrar sino que los store se llevan un feed de nuestras suscripciones.
+      </P>
+      <P>
+        Por lo que vi en aplicaciones muy usadas como Linkedin, cuando te
+        suscripbis te sacan de la app y no son los unicos, elegiria ir por las
+        externar en la primera versión de las suscripciones.
+      </P>
       <H3>
         E - Sugerencias para enriquecer los espacios de creación de contenido
       </H3>
