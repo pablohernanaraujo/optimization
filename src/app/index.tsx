@@ -14,7 +14,10 @@ import { Login } from '../pages/onboarding/login';
 import { Register } from '../pages/onboarding/register';
 import { Home } from '../pages/home';
 import { Architecture } from '../pages/architecture';
+import { Concepts } from '../pages/concepts';
+import { Philosophy } from '../pages/Philosophy';
 import { Prettier } from '../pages/prettier';
+import { Principles } from '../pages/principles';
 import { PushNotifications } from '../pages/push-notifications';
 import { Lunar } from '../pages/lunar';
 import { NotFound } from '../pages/not-found';
@@ -101,8 +104,17 @@ export const App: FunctionComponent = () => {
               <PrivateRoute path="/architecture">
                 <Architecture />
               </PrivateRoute>
+              <PrivateRoute path="/concepts">
+                <Concepts />
+              </PrivateRoute>
+              <PrivateRoute path="/philosophy">
+                <Philosophy />
+              </PrivateRoute>
               <PrivateRoute path="/prettier">
                 <Prettier />
+              </PrivateRoute>
+              <PrivateRoute path="/principles">
+                <Principles />
               </PrivateRoute>
               <PrivateRoute path="/push-notifications">
                 <PushNotifications />
