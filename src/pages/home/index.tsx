@@ -26,6 +26,7 @@ export const Home: FunctionComponent = () => (
         necesidad o prioridades, voy a intentar profundizar en cada una de las
         optimizaciones sin ser tan aburrido.
       </P>
+      <P>lalalal</P>
     </Group>
     <Group type="footer">
       <Spacer />
