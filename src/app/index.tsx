@@ -19,7 +19,9 @@ import { Philosophy } from '../pages/Philosophy';
 import { Prettier } from '../pages/prettier';
 import { Principles } from '../pages/principles';
 import { PushNotifications } from '../pages/push-notifications';
+import { UiComponents } from '../pages/ui-components';
 import { Lunar } from '../pages/lunar';
+import { Palta } from '../pages/palta';
 import { NotFound } from '../pages/not-found';
 
 const PrivateRoute: FunctionComponent<{ path: string }> = ({
@@ -119,8 +121,14 @@ export const App: FunctionComponent = () => {
               <PrivateRoute path="/push-notifications">
                 <PushNotifications />
               </PrivateRoute>
+              <PrivateRoute path="/ui-components">
+                <UiComponents />
+              </PrivateRoute>
               <PrivateRoute path="/lunar">
                 <Lunar />
+              </PrivateRoute>
+              <PrivateRoute path="/palta">
+                <Palta />
               </PrivateRoute>
               <Route component={NotFound} />
             </Switch>
