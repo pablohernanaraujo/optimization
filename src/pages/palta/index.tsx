@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react';
 
 import { ScreenWrapper } from '../../ui/screen-wrapper';
 import { Group } from '../../ui/group';
-import { NavigationLink } from '../../ui/link';
 import { Spacer } from '../../ui/spacer';
 import { H2, H3, H4, Span, LI, P } from '../../ui/typography';
 import { Link } from '../../ui/link';
