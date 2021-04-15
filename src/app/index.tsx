@@ -20,6 +20,8 @@ import { Prettier } from '../pages/prettier';
 import { Principles } from '../pages/principles';
 import { PushNotifications } from '../pages/push-notifications';
 import { UiComponents } from '../pages/ui-components';
+import { Theme } from '../pages/theme';
+import { StyledComponents } from '../pages/styled-components';
 import { Lunar } from '../pages/lunar';
 import { Palta } from '../pages/palta';
 import { NotFound } from '../pages/not-found';
@@ -123,6 +125,12 @@ export const App: FunctionComponent = () => {
               </PrivateRoute>
               <PrivateRoute path="/ui-components">
                 <UiComponents />
+              </PrivateRoute>
+              <PrivateRoute path="/theme">
+                <Theme />
+              </PrivateRoute>
+              <PrivateRoute path="/styled-components">
+                <StyledComponents />
               </PrivateRoute>
               <PrivateRoute path="/lunar">
                 <Lunar />
