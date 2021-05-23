@@ -25,6 +25,7 @@ import { StyledComponents } from '../pages/styled-components';
 import { Lunar } from '../pages/lunar';
 import { Palta } from '../pages/palta';
 import { NotFound } from '../pages/not-found';
+import { Chart } from '../pages/chart';
 
 const PrivateRoute: FunctionComponent<{ path: string }> = ({
   children,
@@ -131,6 +132,9 @@ export const App: FunctionComponent = () => {
               </PrivateRoute>
               <PrivateRoute path="/styled-components">
                 <StyledComponents />
+              </PrivateRoute>
+              <PrivateRoute path="/chart">
+                <Chart />
               </PrivateRoute>
               <PrivateRoute path="/lunar">
                 <Lunar />
