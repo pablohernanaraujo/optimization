@@ -19,16 +19,10 @@ interface Inputs {
 
 export const Login: FunctionComponent = () => {
   const [loading, setLoading] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    errors,
-    setError,
-    formState,
-    reset,
-  } = useForm<Inputs>({
-    mode: 'onChange',
-  });
+  const { register, handleSubmit, errors, setError, formState, reset } =
+    useForm<Inputs>({
+      mode: 'onChange',
+    });
   const setIsAuth = useSetRecoilState(isAuth);
   const setUserData = useSetRecoilState(user);
   const history = useHistory();

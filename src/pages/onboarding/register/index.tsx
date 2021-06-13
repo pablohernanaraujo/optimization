@@ -19,17 +19,10 @@ interface Inputs {
 
 export const Register: FunctionComponent = () => {
   const [loading, setLoading] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    errors,
-    setError,
-    formState,
-    reset,
-    watch,
-  } = useForm<Inputs>({
-    mode: 'onChange',
-  });
+  const { register, handleSubmit, errors, setError, formState, reset, watch } =
+    useForm<Inputs>({
+      mode: 'onChange',
+    });
   const password = useRef({});
   password.current = watch('password', '');
 
