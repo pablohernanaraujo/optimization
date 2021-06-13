@@ -59,6 +59,10 @@ const unloggedLinks = [
     path: '/register',
     name: 'Register',
   },
+  {
+    path: '/curriculum-vitae',
+    name: 'Curriculum vitae',
+  },
 ];
 
 interface MenuList {

@@ -12,7 +12,7 @@ const {
   css,
   ThemeContext,
   keyframes,
-} = styledComponents as styledComponents.ThemedStyledComponentsModule<{
+} = styledComponents as unknown as styledComponents.ThemedStyledComponentsModule<{
   colors: ColorsType;
   emphasis: EmphasisType;
   spacers: SpacersType;
