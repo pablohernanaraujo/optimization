@@ -12,6 +12,7 @@ import { auth, database } from '../firebase';
 
 import { Login } from '../pages/onboarding/login';
 import { Register } from '../pages/onboarding/register';
+import { CurriculumVitae } from '../pages/onboarding/curriculum-vitae';
 import { Home } from '../pages/home';
 import { Architecture } from '../pages/architecture';
 import { Concepts } from '../pages/concepts';
@@ -100,8 +101,11 @@ export const App: FunctionComponent = () => {
               <Route path="/" exact>
                 <Login />
               </Route>
-              <Route path="/register" exact>
+              <Route path="/register">
                 <Register />
+              </Route>
+              <Route path="/curriculum-vitae">
+                <CurriculumVitae />
               </Route>
               <PrivateRoute path="/optimization">
                 <Home />
