@@ -8,6 +8,7 @@ export const fontSize = {
   xxs: '10px',
 };
 
+// Text for commit
 export type FontSizeType = typeof fontSize;
 export type KeyFontSize = keyof FontSizeType;
 
